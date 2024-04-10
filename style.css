@@ -11,29 +11,41 @@
 }
 
 .table th {
-    background-color: #6111bc; /* Couleur de fond pour les cellules d'en-tête */
+    background-color: #1e05f1; /* Couleur de fond pour les cellules d'en-tête */
     color: #fff; /* Couleur du texte pour les cellules d'en-tête */
-    text-align: left; /* Alignement du texte dans les cellules d'en-tête */
 }
 
-.table tr:nth-child(even) {
+.table tr{
     background-color: #fe7a15; /* Couleur de fond pour les lignes paires */
 }
 
-.table tr:nth-child(odd) {
+.table tr{
     background-color: #fff; /* Couleur de fond pour les lignes impaires */
 }
 
 /* Style des liens à l'intérieur des cellules <td> */
 .table td a {
-    display: block; /* Les liens occupent toute la largeur de la cellule */
+    display: inline; /* Les liens occupent toute la largeur de la cellule */
+    align-items: center;
     margin-bottom: 5px; /* Espacement entre les liens */
-    padding: 5px; /* Espacement interne des liens */
     text-decoration: none; /* Supprime les soulignements par défaut des liens */
-    background-color:#6111bc;
+    margin-left: 30px;
 }
 
-/* Style au survol (hover) des liens */
-.table td a:hover {
-    background-color: #f0f0f0; /* Changement de couleur de fond au survol */
+.plus img{
+    width: 50px;
+    height: 50px;
+}
+.plus{
+    display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.banniere h1 {
+    text-align: center;
+}
+td img{
+    width: 20px;
 }

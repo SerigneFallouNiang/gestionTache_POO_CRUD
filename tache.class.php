@@ -31,7 +31,7 @@ class Tache {
  }
  public function readTache(){
     try{
-        $sql="SELECT * FROM Tache JOIN Etat ON Tache.id_etat=Etat.id";
+        $sql="SELECT *,Tache.id AS Tache FROM Tache JOIN Etat ON Tache.id_etat=Etat.id";
       $stmt=$this->connexion->prepare($sql);
       $stmt->execute();
       $results=$stmt->fetchall(PDO::FETCH_ASSOC);
@@ -50,6 +50,23 @@ public function deleteTache($id){
         exit();
     } catch (PDOException $erreur) {
         die("Erreur lors de la suppression !: " . $erreur->getMessage() . "<br/>");
+    }
+}
+
+public function addTache($libelle,$description,$dateEcheange,$id_priorite,$id_etat){
+    try{
+        $sql= "INSERT INTO Tache (libelle,description,dateEcheange,id_priorite,id_etat) VALUES (:libelle,:description,:dateEcheange,:id_priorite,:id_etat)";
+        $stmt=$this->connexion->prepare($sql);
+        $stmt->bindParam(':libelle',$libelle);
+        $stmt->bindParam(':description',$description);
+        $stmt->bindParam(':dateEcheange',$dateEcheange);
+        $stmt->bindParam(':id_priorite',$id_priorite,PDO::PARAM_INT);
+        $stmt->bindParam(':id_etat',$id_etat,PDO::PARAM_INT);
+        $stmt->execute();
+        header("location: accueil.php");
+        exit();
+    }catch (PDOException $erreur) {
+        die("Erreur !: " . $erreur->getMessage() . "<br/>");
     }
 }
 }

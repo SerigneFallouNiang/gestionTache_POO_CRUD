@@ -6,14 +6,14 @@ $user="root";
 $pass= "";
 $db = "gestionTache";
 try{
-    $connexion = new PDO("mysql:host=$host;dbname=$db",$user,$pass);    
-    $libelle="";
+    $connexion = new PDO("mysql:host=$host;dbname=$db",$user,$pass);  
+    // $tache = new Tache($connexion);  
+     $libelle="";
     $description="";
-    $dateEcheange="";
+    $dateEcheange='';
     $id_priorite="";
     $id_etat="";
-    $tache = new Tache($connexion,$libelle,$description,$dateEcheange,$id_priorite,$id_etat);
-    echo 'true';
+    $tache = new Tache ($connexion,$libelle,$description,$dateEcheange,$id_priorite,$id_etat);
 }catch(PDOException $erreur){
     die ("erreur :: connexion impossible" . $erreur->getMessage());
 }

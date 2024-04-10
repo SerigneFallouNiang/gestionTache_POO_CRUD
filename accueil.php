@@ -3,13 +3,21 @@ require_once "config.php";
 $results= $tache->readTache();
 // require('header.php') ?>
 <link rel="stylesheet" href="style.css">
-<div class="_banniere">
-    <h1>Les Tâches à faire </h1>
+<div class="banniere">
+    <h1>Mes Tâches</h1>
 </div>
 
 <div class="container">
-<p><a href="addTache.php">Ajouter une Tâche</a></p>
-    <h2>Liste des Taches</h2>
+    
+<div class="plus">
+    <div>
+         <h2>Liste des Taches</h2></div>
+    
+    <div>
+        <a href="addTache.php"><img src="plus.png" alt=""></a></div>
+    </div>
+    
+
     
     <div class="card-body">
         <table class="table">
@@ -25,8 +33,8 @@ $results= $tache->readTache();
                     <td><?= $taches['dateEcheange']?></td>
                     <td><?= $taches['libelleE']?></td>
                     <td>
-                        <a href="detail.php?id=<?= $taches['id']?>" class="btn btn-info">Voire Plus</a>
-                        <a onclick="return confirm('Confirmer la suppression')" href="deleteTache.php?id=<?= $taches['id']?>" class="btn btn-danger">Supprimer</a>
+                        <a href="detail.php?id=<?= $taches['Tache']?>" class="btn btn-info"><img src="eye_icon.png" alt=""></a>
+                        <a onclick="return confirm('Confirmer la suppression')" href="deleteTache.php?id=<?= $taches['Tache']?>" class="btn btn-danger"><img src="supprimer.png" alt=""></a>
                     </td>
                 </tr>
             <?php endforeach; ?>
