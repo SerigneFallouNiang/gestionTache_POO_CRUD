@@ -40,4 +40,16 @@ class Tache {
         die("Erreur !: " . $erreur->getMessage() . "<br/>");
     }
  }
+public function deleteTache($id){
+    try{
+        $sql="DELETE FROM Tache WHERE id= :id ";
+        $stmt=$this->connexion->prepare($sql);
+        $stmt->bindParam(':id',$id,PDO::PARAM_INT);
+        $stmt->execute();
+        header("location: accueil.php");
+        exit();
+    } catch (PDOException $erreur) {
+        die("Erreur lors de la suppression !: " . $erreur->getMessage() . "<br/>");
+    }
+}
 }
