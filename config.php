@@ -1,5 +1,6 @@
 <?php
 require_once "tache.class.php";
+require_once "user.class.php";
 
 $host ="localhost";
 $user="root";
@@ -14,6 +15,17 @@ try{
     $id_priorite="";
     $id_etat="";
     $tache = new Tache ($connexion,$libelle,$description,$dateEcheange,$id_priorite,$id_etat);
+
+    //instanciation des User
+    $nom="";
+    $prenom="";
+    $email="";
+    $password="";
+    $user= new User ($connexion,$nom,$prenom,$email,$password);
+
+
+
+
 }catch(PDOException $erreur){
     die ("erreur :: connexion impossible" . $erreur->getMessage());
 }
