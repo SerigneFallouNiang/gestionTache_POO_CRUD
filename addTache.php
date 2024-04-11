@@ -47,7 +47,7 @@ $tache->addTache($libelle,$description,$dateEcheange,$id_priorite,$id_etat);
 </div>
  
 <div class="form-group">
-    <select name="id_etat" id="id_etat"  class="form-control">
+    <select name="id_priorite" id="id_priorite"  class="form-control">
             <?php 
             $reponse=$connexion->query('SELECT*FROM priorite');
             while($donnees=$reponse->fetch()){

@@ -15,7 +15,7 @@
     color: #fff; /* Couleur du texte pour les cellules d'en-tête */
 }
 
-.table tr{
+.tableTerminer tr{
     background-color: #fe7a15; /* Couleur de fond pour les lignes paires */
 }
 

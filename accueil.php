@@ -20,7 +20,8 @@ $results= $tache->readTache();
 
     
     <div class="card-body">
-        <table class="table">
+    <table class="<?php echo ($taches['libelleE'] === 'Terminer') ? 'tableTerminer' : 'table' ?>">
+        
             <tr>
                 <th>Libelle</th>
                 <th>Date d'échéance</th>
