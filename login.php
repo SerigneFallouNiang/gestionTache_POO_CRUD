@@ -5,24 +5,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
     $password = $_POST["password"];
     
-    // Préparez votre requête SQL pour récupérer l'utilisateur en fonction de l'email et du mot de passe
-    $stmt = $connexion->prepare("SELECT * FROM User WHERE email = ? AND password = ?");
-    $stmt->bindParam("ss", $email, $password);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    
-    if ($result->num_rows == 1) {
-        // Si l'utilisateur est trouvé, récupérez son identifiant et stockez-le dans la session
-        $row = $result->fetch_assoc();
-        // $_SESSION["utilisateur_id"] = $row["utilisateur_id"];
-        $user_id = $row["id"]; 
-        $_SESSION["email"] = $email;
-        $_SESSION["password"] = $passwords;
-        header("Location: accueil.php");
-        exit;
-    } else {
-        // Si l'utilisateur n'est pas trouvé, affichez un message d'erreur ou redirigez vers une page d'erreur
-        echo "Identifiants incorrects. Veuillez réessayer.";
+    try {
+        // Préparez votre requête SQL pour récupérer l'utilisateur en fonction de l'email et du mot de passe
+        $sql = "SELECT * FROM User WHERE email = :email AND password = :password";
+        $stmt = $connexion->prepare($sql);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':password', $password);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        if ($result) {
+            // Si l'utilisateur est trouvé, récupérez son identifiant et stockez-le dans la session
+            $_SESSION["email"] = $email;
+            $_SESSION["password"] = $password;
+            header("Location: accueil.php");
+            exit;
+        } else {
+            // Si l'utilisateur n'est pas trouvé, affichez un message d'erreur ou redirigez vers une page d'erreur
+            echo "Identifiants incorrects. Veuillez réessayer.";
+        }
+    } catch(PDOException $e) {
+        echo "Erreur : " . $e->getMessage();
     }
 }
 ?>
@@ -95,15 +98,6 @@ body{
 	cursor:pointer;
 	position:relative;
 }
-/*.btn:after{
-	content:"";
-	position:absolute;
-	background:rgba(0,0,0,0.50);
-	top:0;
-	right:0;
-	width:100%;
-	height:100%;
-}*/
 .input-container input:focus ~ label,
 .input-container input:valid ~ label{
 	top:-12px;
@@ -121,19 +115,19 @@ body{
 </head>
 <body>
 <div class="box">
-	<form action="" method="post">
-		<span class="text-center">login</span>
-	<div class="input-container">
-		<input type="email" name="email" required=""/>
-		<label>Email :</label>		
-	</div>
-	<div class="input-container">		
-		<input type="password"  name="password" required=""/>
-		<label>Password :</label>
-	</div>
-		<!-- <button type="button" ></button> -->
+    <form action="" method="post">
+        <span class="text-center">login</span>
+    <div class="input-container">
+        <input type="email" name="email" required=""/>
+        <label>Email :</label>        
+    </div>
+    <div class="input-container">        
+        <input type="password"  name="password" required=""/>
+        <label>Password :</label>
+    </div>
+        <!-- <button type="button" ></button> -->
         <input type="submit" name="submit" class="btn" value="submit">
-</form>	
+    </form>    
 </div>
 </body>
 </html>
