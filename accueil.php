@@ -14,7 +14,7 @@ $results= $tache->readTache();
          <h2>Liste des Taches</h2></div>
     
     <div>
-        <a href="addTache.php"><img src="plus.png" alt=""></a></div>
+        <a href="addTache.php"><img src="images/plus.png" alt=""></a></div>
     </div>
     
 
@@ -34,8 +34,8 @@ $results= $tache->readTache();
                     <td><?= $taches['dateEcheange']?></td>
                     <td><?= $taches['libelleE']?></td>
                     <td>
-                        <a href="detail.php?id=<?= $taches['Tache']?>" class="btn btn-info"><img src="eye_icon.png" alt=""></a>
-                        <a onclick="return confirm('Confirmer la suppression')" href="deleteTache.php?id=<?= $taches['Tache']?>" class="btn btn-danger"><img src="supprimer.png" alt=""></a>
+                        <a href="detail.php?id=<?= $taches['Tache']?>" class="btn btn-info"><img src="images/eye_icon.png" alt=""></a>
+                        <a onclick="return confirm('Confirmer la suppression')" href="deleteTache.php?id=<?= $taches['Tache']?>" class="btn btn-danger"><img src="images/supprimer.png" alt=""></a>
                     </td>
                 </tr>
             <?php endforeach; ?>
