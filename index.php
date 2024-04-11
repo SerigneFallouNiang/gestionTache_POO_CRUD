@@ -127,7 +127,8 @@ body{
     </div>
         <!-- <button type="button" ></button> -->
         <input type="submit" name="submit" class="btn" value="submit">
-    </form>    
+    </form>  
+	<a style="color: #fff;" href="addUser.php">s'inscrire</a>  
 </div>
 </body>
 </html>

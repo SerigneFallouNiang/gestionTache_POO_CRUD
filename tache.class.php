@@ -31,7 +31,7 @@ class Tache {
  }
  public function readTache(){
     try{
-        $sql="SELECT *,Tache.id AS Tache FROM Tache JOIN Etat ON Tache.id_etat=Etat.id";
+        $sql="SELECT *,Tache.id AS Tache FROM Tache JOIN Etat ON Tache.id_etat=Etat.id ORDER BY libelleE ASC";
       $stmt=$this->connexion->prepare($sql);
       $stmt->execute();
       $results=$stmt->fetchall(PDO::FETCH_ASSOC);

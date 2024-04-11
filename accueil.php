@@ -20,7 +20,7 @@ $results= $tache->readTache();
 
     
     <div class="card-body">
-    <table class="<?php echo ($taches['libelleE'] === 'Terminer') ? 'tableTerminer' : 'table' ?>">
+    <table class="table">
         
             <tr>
                 <th>Libelle</th>
@@ -29,7 +29,7 @@ $results= $tache->readTache();
                 <th>Voire</th>
             </tr>
             <?php foreach ($results as $taches) : ?>
-                <tr>
+                <tr class="<?php echo ($taches['libelleE'] === 'Terminée') ? 'tableTermine' : ''; ?>">
                     <td><?= $taches['libelle']?> </td>
                     <td><?= $taches['dateEcheange']?></td>
                     <td><?= $taches['libelleE']?></td>

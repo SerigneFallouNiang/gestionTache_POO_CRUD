@@ -14,13 +14,8 @@
     background-color: #1e05f1; /* Couleur de fond pour les cellules d'en-tête */
     color: #fff; /* Couleur du texte pour les cellules d'en-tête */
 }
-
-.tableTerminer tr{
-    background-color: #fe7a15; /* Couleur de fond pour les lignes paires */
-}
-
-.table tr{
-    background-color: #fff; /* Couleur de fond pour les lignes impaires */
+.tableTermine {
+    background-color: #3bf105 ; /* Couleur de fond verte pour les lignes "Terminée" */
 }
 
 /* Style des liens à l'intérieur des cellules <td> */
