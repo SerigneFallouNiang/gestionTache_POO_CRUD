@@ -1,0 +1,72 @@
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    border: 1px solid #000; /* Bordure de chaque cellule */
+    padding: 8px; /* Espacement interne */
+}
+
+.table th {
+    background-color: #1e05f1; /* Couleur de fond pour les cellules d'en-tête */
+    color: #fff; /* Couleur du texte pour les cellules d'en-tête */
+}
+.tableTermine {
+    background-color: #3bf105 ; /* Couleur de fond verte pour les lignes "Terminée" */
+}
+
+/* Style des liens à l'intérieur des cellules <td> */
+.table td a {
+    display: inline; /* Les liens occupent toute la largeur de la cellule */
+    align-items: center;
+    margin-bottom: 5px; /* Espacement entre les liens */
+    text-decoration: none; /* Supprime les soulignements par défaut des liens */
+    margin-left: 30px;
+}
+
+.plus img{
+    width: 50px;
+    height: 50px;
+}
+.plus{
+    display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.banniere h1 {
+    text-align: center;
+}
+td img{
+    width: 20px;
+}
+
+
+/* css de la page detail */
+details {
+    user-select: none;
+  }
+  details[open] {
+    & summary svg {
+      transform: rotate(-90deg);
+    }
+  }
+  summary {
+    cursor: pointer;
+  }
+  svg {
+    transition: all 0.3s;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  :focus {
+    outline: none;
+  }
+  
+
+  
