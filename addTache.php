@@ -3,8 +3,9 @@ include "config.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     extract($_POST);
-$tache->addTache($libelle,$description,$dateEcheange,$id_priorite,$id_etat);
+$tache->addTache($libelle,$description,$dateEcheange,$id_priorite,$id_etat,$_SESSION['id']);
 }
+var_dump($id_user);
 ?>
 
 

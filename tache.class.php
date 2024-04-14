@@ -6,7 +6,8 @@ class Tache {
  private $dateEcheange;
  private $id_priorite;
  private $id_etat;
- public function __construct($connexion,$libelle,$description,$dateEcheange,$id_priorite, $id_etat){
+ private $id_user;
+ public function __construct($connexion,$libelle,$description,$dateEcheange,$id_priorite, $id_etat,$id_user){
     $this->connexion=$connexion;
     $this->libelle=$libelle;
     $this->description=$description;
@@ -29,10 +30,12 @@ class Tache {
  public function getid_etat(){
     return $this->id_etat;
  }
- public function readTache(){
+ public function readTache($id_user){
     try{
-        $sql="SELECT *,Tache.id AS Tache FROM Tache JOIN Etat ON Tache.id_etat=Etat.id ORDER BY libelleE ASC";
+        $sql="SELECT *,Tache.id AS Tache ,Tache.id_user AS User FROM Tache 
+        JOIN Etat ON Tache.id_etat=Etat.id  WHERE Tache.id_user = :id_user ORDER BY libelleE ASC";
       $stmt=$this->connexion->prepare($sql);
+      $stmt->bindParam(':id_user', $id_user, PDO::PARAM_INT);
       $stmt->execute();
       $results=$stmt->fetchall(PDO::FETCH_ASSOC);
       return $results;
@@ -53,15 +56,16 @@ public function deleteTache($id){
     }
 }
 
-public function addTache($libelle,$description,$dateEcheange,$id_priorite,$id_etat){
+public function addTache($libelle,$description,$dateEcheange,$id_priorite,$id_etat,$id_user){
     try{
-        $sql= "INSERT INTO Tache (libelle,description,dateEcheange,id_priorite,id_etat) VALUES (:libelle,:description,:dateEcheange,:id_priorite,:id_etat)";
+        $sql= "INSERT INTO Tache (libelle,description,dateEcheange,id_priorite,id_etat, id_user) VALUES (:libelle,:description,:dateEcheange,:id_priorite,:id_etat, :id_user)";
         $stmt=$this->connexion->prepare($sql);
         $stmt->bindParam(':libelle',$libelle);
         $stmt->bindParam(':description',$description);
         $stmt->bindParam(':dateEcheange',$dateEcheange);
         $stmt->bindParam(':id_priorite',$id_priorite,PDO::PARAM_INT);
         $stmt->bindParam(':id_etat',$id_etat,PDO::PARAM_INT);
+        $stmt->bindParam(':id_user',$id_user,PDO::PARAM_INT);
         $stmt->execute();
         header("location: accueil.php");
         exit();

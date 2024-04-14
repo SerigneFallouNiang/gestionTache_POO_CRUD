@@ -14,8 +14,10 @@ require_once "config.php";
 $nom = $_SESSION["nom"];
 $prenom = $_SESSION["prenom"];
 $email=$_SESSION["email"];
+$id_user=$_SESSION['id'];
+var_dump($id_user);
 // Récupérer les tâches depuis la base de données
-$results = $tache->readTache();
+$results = $tache->readTache($id_user);
 
 ?>
 <link rel="stylesheet" href="style.css">

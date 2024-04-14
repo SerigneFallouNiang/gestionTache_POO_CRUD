@@ -14,7 +14,8 @@ try{
     $dateEcheange='';
     $id_priorite="";
     $id_etat="";
-    $tache = new Tache ($connexion,$libelle,$description,$dateEcheange,$id_priorite,$id_etat);
+    $id_user="";
+    $tache = new Tache ($connexion,$libelle,$description,$dateEcheange,$id_priorite,$id_etat,$id_user);
 
     //instanciation des User
     $nom="";

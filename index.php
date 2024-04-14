@@ -19,6 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["password"] = $password;
             $_SESSION["nom"] = $result["nom"]; 
             $_SESSION["prenom"] = $result["prenom"]; 
+            $_SESSION["id"] = $result["id"];
             header("Location: accueil.php");
             exit;
             
