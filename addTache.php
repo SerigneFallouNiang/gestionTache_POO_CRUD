@@ -10,12 +10,6 @@ $tache->addTache($libelle,$description,$dateEcheange,$id_priorite,$id_etat,$_id_
 }
 ?>
 
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
