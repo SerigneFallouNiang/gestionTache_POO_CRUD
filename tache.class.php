@@ -57,6 +57,9 @@ public function deleteTache($id){
 }
 
 public function addTache($libelle,$description,$dateEcheange,$id_priorite,$id_etat,$id_user){
+    session_start();
+    $email=$_SESSION["email"];
+$id_user=$_SESSION['id'];
     try{
         $sql= "INSERT INTO Tache (libelle,description,dateEcheange,id_priorite,id_etat, id_user) VALUES (:libelle,:description,:dateEcheange,:id_priorite,:id_etat, :id_user)";
         $stmt=$this->connexion->prepare($sql);

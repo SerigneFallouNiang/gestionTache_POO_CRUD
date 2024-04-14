@@ -1,7 +1,7 @@
 <?php
 include "config.php";
 $id = $_GET['id'];
-$results= $tache->readTache();
+$results= $tache->readTache($id_user);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     extract($_POST);
     $tache->update($id,$libelle,$description,$dateEcheange,$id_priorite,$id_etat);

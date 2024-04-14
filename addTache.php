@@ -1,12 +1,19 @@
 <?php
-include "config.php";
-
+session_start();
+// Inclure la configuration de la base de données
+require_once "config.php";
+$id_user=$_SESSION['id'];
+var_dump($id_user);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     extract($_POST);
-$tache->addTache($libelle,$description,$dateEcheange,$id_priorite,$id_etat,$_SESSION['id']);
+$tache->addTache($libelle,$description,$dateEcheange,$id_priorite,$id_etat,$_id_user);
 }
-var_dump($id_user);
 ?>
+
+
+
+
+
 
 
 <!DOCTYPE html>
