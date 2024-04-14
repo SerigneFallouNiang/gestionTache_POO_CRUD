@@ -45,28 +45,6 @@ td img{
     width: 20px;
 }
 
-
-/* css de la page detail */
-details {
-    user-select: none;
-  }
-  details[open] {
-    & summary svg {
-      transform: rotate(-90deg);
-    }
-  }
-  summary {
-    cursor: pointer;
-  }
-  svg {
-    transition: all 0.3s;
-  }
-  summary::-webkit-details-marker {
-    display: none;
-  }
-  :focus {
-    outline: none;
-  }
   
 
   

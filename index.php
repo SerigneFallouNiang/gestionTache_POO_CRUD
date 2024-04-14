@@ -2,8 +2,7 @@
 session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include "config.php";
-    $email = $_POST["email"];
-    $password = $_POST["password"];
+  extract($_POST);
     
     try {
         // Préparez votre requête SQL pour récupérer l'utilisateur en fonction de l'email et du mot de passe
@@ -18,8 +17,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Si l'utilisateur est trouvé, récupérez son identifiant et stockez-le dans la session
             $_SESSION["email"] = $email;
             $_SESSION["password"] = $password;
+            $_SESSION["nom"] = $result["nom"]; 
+            $_SESSION["prenom"] = $result["prenom"]; 
             header("Location: accueil.php");
             exit;
+            
         } else {
             // Si l'utilisateur n'est pas trouvé, affichez un message d'erreur ou redirigez vers une page d'erreur
             echo "Identifiants incorrects. Veuillez réessayer.";

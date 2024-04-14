@@ -2,7 +2,14 @@
 include "config.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     extract($_POST);
-    $user->addUser($nom,$prenom,$email,$password);
+    // $user->addUser($nom,$prenom,$email,$password);
+    
+
+    if ($user->validerChaine($nom) && $user->validerChaine($prenom) && $user->validerEmail($email) && $user->validerTelephone($password)) {
+     $user->addUser($nom,$prenom,$email,$password);
+} else {
+        echo 'Données invalides. Il faut bien vérifier les données soumit';
+    }
 }
 ?>
 

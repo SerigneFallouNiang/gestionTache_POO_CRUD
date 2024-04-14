@@ -1,5 +1,7 @@
 <?php
+include "user.trait.php";
 class User {
+    use Validation;
     private $connexion;
     private $nom;
     private $prenom;
