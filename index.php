@@ -20,9 +20,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["nom"] = $result["nom"]; 
             $_SESSION["prenom"] = $result["prenom"]; 
             $_SESSION["id"] = $result["id"];
-            header("Location: accueil.php");
-            exit;
-            
+            $_SESSION["role"] = $result["role"];
+            if ($_SESSION["role"] == "admin") {
+                header("Location: admin.php"); // Redirigez vers la page admin
+                exit;
+            } else {
+                header("Location: accueil.php"); // Redirigez vers la page d'accueil normale
+                exit;
+            }
         } else {
             // Si l'utilisateur n'est pas trouvé, affichez un message d'erreur ou redirigez vers une page d'erreur
             echo "Identifiants incorrects. Veuillez réessayer.";

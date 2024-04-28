@@ -93,4 +93,20 @@ try{
 die("Erreur Update !: " . $erreur->getMessage() . "<br/>");
 }
     }
+
+    public function readAllTaches() {
+        try {
+            $sql = "SELECT Tache.*, User.nom, User.prenom, Etat.libelleE
+                    FROM Tache
+                    JOIN User ON Tache.id_user = User.id
+                    JOIN Etat ON Tache.id_etat = Etat.id
+                    ORDER BY Tache.id ASC";
+            $stmt = $this->connexion->prepare($sql);
+            $stmt->execute();
+            $results = $stmt->fetchall(PDO::FETCH_ASSOC);
+            return $results;
+        } catch (PDOException $erreur) {
+            die("Erreur !: " . $erreur->getMessage() . "<br/>");
+        }
+    }
 }
